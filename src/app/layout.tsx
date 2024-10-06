@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${neueMontreal.className} antialiased`}>
+      <body
+        className={`${neueMontreal.className} antialiased text-text-primary`}
+      >
         <main>{children}</main>
       </body>
     </html>

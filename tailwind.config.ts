@@ -50,6 +50,11 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        text: {
+          primary: "#001F1D",
+          secondary: "#484A4D",
+          tertiary: "#787B80",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -64,6 +69,12 @@ const config: Config = {
       },
       margin: {
         "22": "5.25rem",
+      },
+      height: {
+        "15": "3.75rem",
+      },
+      width: {
+        "42": "10.313rem",
       },
     },
   },

@@ -17,21 +17,36 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 interface DatePickerProps {
   placeholder: string;
+  value: string;
+  onSelect: (value: string) => void;
+  isError: boolean;
 }
-const DatePicker = ({ placeholder }: DatePickerProps) => {
-  const [date, setDate] = useState<Date>();
-
+const DatePicker = ({
+  placeholder,
+  value,
+  onSelect,
+  isError,
+}: DatePickerProps) => {
+  const dateSelectHandler = (value: Date | undefined) => {
+    if (value) {
+      onSelect(format(value, "dd/MM/yyyy"));
+    }
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
-          className="w-[267.5px] h-15 justify-between p-3"
+          className={cn(
+            "w-[177px] h-15 justify-between p-3",
+            isError && "border-red-500"
+          )}
         >
           <div className="text-text-secondary text-start font-normal">
-            {date ? (
+            {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
                   className="relative top-0.5"
@@ -40,11 +55,11 @@ const DatePicker = ({ placeholder }: DatePickerProps) => {
                   height={20}
                   alt="calender icon"
                 />
-                <div className="flex flex-col gap-y-2.5 text-text-tertiary w-42">
+                <div className="flex flex-col gap-y-2.5 text-text-tertiary">
                   <span className="text-xs leading-none">{placeholder}</span>
                   <span className="text-base leading-none font-medium overflow-hidden text-ellipsis">
                     <span className="text-text-primary">
-                      {format(date, "MM/dd/yyyy")}
+                      {format(new Date(value), "dd/MM/yyyy")}
                     </span>
                   </span>
                 </div>
@@ -57,7 +72,7 @@ const DatePicker = ({ placeholder }: DatePickerProps) => {
                   height={20}
                   alt="calender icon"
                 />
-                <span className="text-base w-42">{placeholder}</span>
+                <span className="text-base">{placeholder}</span>
               </div>
             )}
           </div>
@@ -67,23 +82,12 @@ const DatePicker = ({ placeholder }: DatePickerProps) => {
         align="start"
         className="flex w-auto flex-col space-y-2 p-2"
       >
-        <Select
-          onValueChange={(value) =>
-            setDate(addDays(new Date(), parseInt(value)))
-          }
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select" />
-          </SelectTrigger>
-          <SelectContent position="popper">
-            <SelectItem value="0">Today</SelectItem>
-            <SelectItem value="1">Tomorrow</SelectItem>
-            <SelectItem value="3">In 3 days</SelectItem>
-            <SelectItem value="7">In a week</SelectItem>
-          </SelectContent>
-        </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          <Calendar
+            mode="single"
+            selected={new Date(value)}
+            onSelect={dateSelectHandler}
+          />
         </div>
       </PopoverContent>
     </Popover>

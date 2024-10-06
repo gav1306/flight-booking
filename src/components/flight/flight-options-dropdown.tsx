@@ -25,18 +25,25 @@ import useSWR from "swr";
 import { AIRPORT_KEY, getAirports } from "@/app/services/flight";
 interface FlightOptionsDropdownProps {
   placeholder: string;
+  onSelect: (value: string) => void;
+  value: string;
+  isError: boolean;
 }
-const FlightOptionsDropdown = ({ placeholder }: FlightOptionsDropdownProps) => {
+const FlightOptionsDropdown = ({
+  placeholder,
+  onSelect,
+  value,
+  isError,
+}: FlightOptionsDropdownProps) => {
   const { data, isLoading } = useSWR(AIRPORT_KEY, getAirports);
   const [open, setOpen] = useState(false);
-  const [code, setCode] = useState("");
 
   const selectedAirport = data?.find((airport) => {
-    return airport.code === code;
+    return airport.code === value;
   });
 
   const selectAirportHandler = (currentValue: string) => {
-    setCode(currentValue === code ? "" : currentValue);
+    onSelect(currentValue);
     setOpen(false);
   };
   return (
@@ -46,10 +53,13 @@ const FlightOptionsDropdown = ({ placeholder }: FlightOptionsDropdownProps) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[267.5px] h-15 justify-between p-3"
+          className={cn(
+            "w-[267.5px] h-15 justify-between p-3",
+            isError && "border-red-500"
+          )}
         >
           <div className="text-text-secondary text-start font-normal">
-            {code ? (
+            {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
                   className="relative top-0.5"
@@ -81,7 +91,7 @@ const FlightOptionsDropdown = ({ placeholder }: FlightOptionsDropdownProps) => {
       <PopoverContent className="w-[267.5px] p-0">
         <Command filter={airportFilter}>
           <CommandInput placeholder="Search airports..." className="h-9" />
-          <CommandList>
+          <CommandList className="no-scrollbar">
             <CommandEmpty>
               {isLoading ? "Airports are loading.." : "No airports found"}
             </CommandEmpty>
@@ -94,13 +104,7 @@ const FlightOptionsDropdown = ({ placeholder }: FlightOptionsDropdownProps) => {
                     onSelect={selectAirportHandler}
                     className="cursor-pointer"
                   >
-                    {airport.name}
-                    <CheckIcon
-                      className={cn(
-                        "ml-auto w-4 h-4",
-                        code === airport.code ? "opacity-100" : "opacity-0"
-                      )}
-                    />
+                    <Option {...airport} />
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -109,6 +113,24 @@ const FlightOptionsDropdown = ({ placeholder }: FlightOptionsDropdownProps) => {
         </Command>
       </PopoverContent>
     </Popover>
+  );
+};
+
+interface Airport {
+  name: string;
+  code: string;
+  city: string;
+  country: string;
+}
+const Option = ({ city, country, code }: Airport) => {
+  return (
+    <div className="flex items-center gap-2 justify-between w-full">
+      <div className="flex flex-col">
+        <span className="text-text-dark-2">{city}</span>
+        <span className="text-text-secondary text-xs">{country}</span>
+      </div>
+      <span className="text-text-dark-2">{code}</span>
+    </div>
   );
 };
 

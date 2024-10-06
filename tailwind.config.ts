@@ -54,6 +54,8 @@ const config: Config = {
           primary: "#001F1D",
           secondary: "#484A4D",
           tertiary: "#787B80",
+          dark: "#000C0B",
+          "dark-2": "#2B2B2B",
         },
       },
       borderRadius: {
@@ -71,9 +73,13 @@ const config: Config = {
         "22": "5.25rem",
       },
       height: {
+        "13": "3.25rem",
         "15": "3.75rem",
+        "42": "10.313rem",
       },
       width: {
+        "13": "3.25rem",
+        "15": "3.75rem",
         "42": "10.313rem",
       },
     },

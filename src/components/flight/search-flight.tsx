@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import searchIcon from "../../app/assets/icons/search.svg";
+import switchIcon from "../../app/assets/icons/switch.svg";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,16 +18,20 @@ import DatePicker from "./date-picker";
 import Image from "next/image";
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  from: z.string().min(1, { message: "required" }),
+  to: z.string().min(1, { message: "required" }),
+  departureDate: z.string().min(1, { message: "required" }),
+  returnDate: z.string().min(1, { message: "required" }),
 });
 
 const SearchFlightForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
+      from: "",
+      to: "",
+      departureDate: "",
+      returnDate: "",
     },
   });
 
@@ -34,60 +39,119 @@ const SearchFlightForm = () => {
     console.log(data);
   }
 
+  const whereFromHandler = (value: string) => {
+    form.setValue("from", value);
+  };
+
+  const whereToHandler = (value: string) => {
+    form.setValue("to", value);
+  };
+
+  const departureDateHandler = (value: string) => {
+    form.setValue("departureDate", value);
+  };
+
+  const returnDateHandler = (value: string) => {
+    form.setValue("returnDate", value);
+  };
+
+  const switchLocationsHandler = () => {
+    const from = form.getValues("from");
+    const to = form.getValues("to");
+    form.setValue("from", to);
+    form.setValue("to", from);
+  };
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <FlightOptionsDropdown placeholder="Where from?" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <FlightOptionsDropdown placeholder="Where to?" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <DatePicker placeholder="Departure" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <DatePicker placeholder="Return" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-8"
+      >
+        <div className="flex items-center gap-3">
+          <FormField
+            control={form.control}
+            name="from"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <FlightOptionsDropdown
+                    placeholder="Where from?"
+                    onSelect={whereFromHandler}
+                    isError={!!form.formState.errors.from}
+                    value={field.value}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <Button
+            className="rounded-full w-13 h-13 bg-secondary"
+            variant="ghost"
+            onClick={switchLocationsHandler}
+          >
+            <Image
+              src={switchIcon}
+              width={20}
+              height={20}
+              alt="switch icon"
+              className="h-5 w-5"
+            />
+          </Button>
+          <FormField
+            control={form.control}
+            name="to"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <FlightOptionsDropdown
+                    placeholder="Where to?"
+                    onSelect={whereToHandler}
+                    value={field.value}
+                    isError={!!form.formState.errors.to}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <div />
+          <FormField
+            control={form.control}
+            name="departureDate"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <DatePicker
+                    placeholder="Departure"
+                    onSelect={departureDateHandler}
+                    value={field.value}
+                    isError={!!form.formState.errors.departureDate}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="returnDate"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <DatePicker
+                    placeholder="Return"
+                    onSelect={returnDateHandler}
+                    value={field.value}
+                    isError={!!form.formState.errors.returnDate}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+
         <Button
           type="submit"
-          className="text-base font-medium h-12 w-[250px] gap-x-2.5 tracking-widest"
+          className="text-base font-medium h-12 w-[250px] gap-x-2.5 tracking-widest ml-auto"
         >
           <Image src={searchIcon} height={16} width={16} alt="search icon" />
           Search flights

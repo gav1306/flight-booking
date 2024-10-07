@@ -78,14 +78,12 @@ const DatePicker = ({
         align="start"
         className="flex w-auto flex-col space-y-2 p-2"
       >
-        <div className="rounded-md border">
-          <Calendar
-            mode="single"
-            selected={new Date(value)}
-            onSelect={dateSelectHandler}
-            disabled={disabled}
-          />
-        </div>
+        <Calendar
+          mode="single"
+          selected={new Date(value)}
+          onSelect={dateSelectHandler}
+          disabled={disabled}
+        />
       </PopoverContent>
     </Popover>
   );

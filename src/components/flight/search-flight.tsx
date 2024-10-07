@@ -6,17 +6,11 @@ import { z } from "zod";
 import searchIcon from "../../app/assets/icons/search.svg";
 import switchIcon from "../../app/assets/icons/switch.svg";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import FlightOptionsDropdown from "./flight-options-dropdown";
 import DatePicker from "./date-picker";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { createSearchParams } from "@/lib/helper";
 
 const FormSchema = z.object({
@@ -28,7 +22,6 @@ const FormSchema = z.object({
 
 const SearchFlightForm = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {

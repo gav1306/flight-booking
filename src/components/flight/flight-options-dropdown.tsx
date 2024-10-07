@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 import markIcon from "../../app/assets/icons/mark.svg";
 import { airportFilter } from "@/lib/helper";
@@ -71,10 +71,16 @@ const FlightOptionsDropdown = ({
                 <div className="flex flex-col gap-y-2.5 text-text-tertiary w-42">
                   <span className="text-xs leading-none">{placeholder}</span>
                   <span className="text-base leading-none font-medium overflow-hidden text-ellipsis">
-                    <span className="text-text-primary">
-                      {selectedAirport?.code}
-                    </span>{" "}
-                    {selectedAirport?.name}
+                    {isLoading ? (
+                      "Loading..."
+                    ) : (
+                      <Fragment>
+                        <span className="text-text-primary">
+                          {selectedAirport?.code}
+                        </span>{" "}
+                        {selectedAirport?.name}
+                      </Fragment>
+                    )}
                   </span>
                 </div>
               </div>

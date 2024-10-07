@@ -9,6 +9,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(90deg, rgba(58, 104, 137, 0.5) 0%, #3A6889 45.63%, rgba(58, 104, 137, 0.5) 100%)",
+      },
+      keyframes: {
+        move: {
+          "0%": { transform: "translateX(-100%) scaleX(0.1)" },
+          "25%": { transform: "translateX(-50%) scaleX(0.2)" },
+          "50%": { transform: "translateX(0%) scaleX(0.5)" },
+          "75%": { transform: "translateX(50%) scaleX(0.2)" },
+          "100%": { transform: "translateX(100%) scaleX(0.1)" },
+        },
+      },
+      animation: {
+        "move-infinite": "move 3s linear infinite",
+      },
+
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

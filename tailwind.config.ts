@@ -57,6 +57,9 @@ const config: Config = {
           dark: "#000C0B",
           "dark-2": "#2B2B2B",
         },
+        button: {
+          secondary: "#e5ebeb",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

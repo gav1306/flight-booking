@@ -16,27 +16,29 @@ import {
 import FlightOptionsDropdown from "./flight-options-dropdown";
 import DatePicker from "./date-picker";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { createSearchParams } from "@/lib/helper";
 
 const FormSchema = z.object({
   from: z.string().min(1, { message: "required" }),
   to: z.string().min(1, { message: "required" }),
-  departureDate: z.string().min(1, { message: "required" }),
-  returnDate: z.string().min(1, { message: "required" }),
+  departureDate: z.number().min(1, { message: "required" }),
+  returnDate: z.number().min(1, { message: "required" }),
 });
 
 const SearchFlightForm = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       from: "",
       to: "",
-      departureDate: "",
-      returnDate: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+    router.push(`/transport?${createSearchParams(data)}`);
   }
 
   const whereFromHandler = (value: string) => {
@@ -47,11 +49,11 @@ const SearchFlightForm = () => {
     form.setValue("to", value);
   };
 
-  const departureDateHandler = (value: string) => {
+  const departureDateHandler = (value: number) => {
     form.setValue("departureDate", value);
   };
 
-  const returnDateHandler = (value: string) => {
+  const returnDateHandler = (value: number) => {
     form.setValue("returnDate", value);
   };
 

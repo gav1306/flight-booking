@@ -19,3 +19,11 @@ export const airportFilter = (value: string, search: string): number => {
   }
   return 0;
 };
+
+export const createSearchParams = (data: Record<string, string | number>) => {
+  const params = new URLSearchParams();
+  for (const key in data) {
+    params.set(key, data[key].toString());
+  }
+  return params.toString();
+};

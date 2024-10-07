@@ -10,8 +10,8 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import FlightOptionsDropdown from "./flight-options-dropdown";
 import DatePicker from "./date-picker";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { createSearchParams } from "@/lib/helper";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { createSearchParams, getFlightFilterSearchParams } from "@/lib/helper";
 
 const FormSchema = z.object({
   from: z.string().min(1, { message: "required" }),
@@ -20,18 +20,35 @@ const FormSchema = z.object({
   returnDate: z.number().min(1, { message: "required" }),
 });
 
-const SearchFlightForm = () => {
+interface SearchFlightFormProps {
+  onClose?: () => void;
+}
+const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const { from, to, departureDate, returnDate } =
+    getFlightFilterSearchParams(searchParams);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      from: "",
-      to: "",
+      from: from || "",
+      to: to || "",
+      departureDate: departureDate || undefined,
+      returnDate: returnDate || undefined,
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    router.push(`/transport?${createSearchParams(data)}`);
+    if (onClose) {
+      onClose();
+    }
+    if (pathname.includes("/transport")) {
+      router.replace(`/transport?${createSearchParams(data)}`);
+    } else {
+      router.push(`/transport?${createSearchParams(data)}`);
+    }
   }
 
   const whereFromHandler = (value: string) => {

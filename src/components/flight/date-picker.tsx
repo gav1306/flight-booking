@@ -1,5 +1,5 @@
 "use client";
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import calenderIcon from "../../app/assets/icons/calendar.svg";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -8,20 +8,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 interface DatePickerProps {
   placeholder: string;
-  value: string;
-  onSelect: (value: string) => void;
+  value: number;
+  onSelect: (value: number) => void;
   isError: boolean;
 }
 const DatePicker = ({
@@ -32,9 +24,12 @@ const DatePicker = ({
 }: DatePickerProps) => {
   const dateSelectHandler = (value: Date | undefined) => {
     if (value) {
-      onSelect(format(value, "dd/MM/yyyy"));
+      onSelect(value.getTime());
     }
   };
+
+  console.log(value);
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -87,6 +82,7 @@ const DatePicker = ({
             mode="single"
             selected={new Date(value)}
             onSelect={dateSelectHandler}
+            disabled={{ before: new Date() }}
           />
         </div>
       </PopoverContent>

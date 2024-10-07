@@ -1,4 +1,5 @@
 import { AIRPORTS } from "@/data/airports";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 export const airportFilter = (value: string, search: string): number => {
   const { name, city, country } = AIRPORTS.find((airport) => {
@@ -26,4 +27,15 @@ export const createSearchParams = (data: Record<string, string | number>) => {
     params.set(key, data[key].toString());
   }
   return params.toString();
+};
+
+export const getFlightFilterSearchParams = (
+  searchParams: ReadonlyURLSearchParams
+) => {
+  const from = searchParams.get("from");
+  const to = searchParams.get("to");
+  const departureDate = +searchParams.get("departureDate")!;
+  const returnDate = +searchParams.get("returnDate")!;
+
+  return { from, to, departureDate, returnDate };
 };

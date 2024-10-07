@@ -10,25 +10,26 @@ import {
 } from "@/components/ui/popover";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Matcher } from "react-day-picker";
 interface DatePickerProps {
   placeholder: string;
   value: number;
   onSelect: (value: number) => void;
   isError: boolean;
+  disabled: Matcher;
 }
 const DatePicker = ({
   placeholder,
   value,
   onSelect,
   isError,
+  disabled,
 }: DatePickerProps) => {
   const dateSelectHandler = (value: Date | undefined) => {
     if (value) {
       onSelect(value.getTime());
     }
   };
-
-  console.log(value);
 
   return (
     <Popover>
@@ -44,7 +45,7 @@ const DatePicker = ({
             {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
-                  className="relative top-0.5"
+                  className="relative top-0.5 h-5 w-5"
                   src={calenderIcon}
                   width={20}
                   height={20}
@@ -60,7 +61,7 @@ const DatePicker = ({
                 </div>
               </div>
             ) : (
-              <div className="flex items-center gap-x-2.5">
+              <div className="flex items-center gap-x-2.5 h-5 w-5">
                 <Image
                   src={calenderIcon}
                   width={20}
@@ -82,7 +83,7 @@ const DatePicker = ({
             mode="single"
             selected={new Date(value)}
             onSelect={dateSelectHandler}
-            disabled={{ before: new Date() }}
+            disabled={disabled}
           />
         </div>
       </PopoverContent>

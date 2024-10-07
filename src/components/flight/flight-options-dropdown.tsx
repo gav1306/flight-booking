@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -62,7 +62,7 @@ const FlightOptionsDropdown = ({
             {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
-                  className="relative top-0.5"
+                  className="relative top-0.5 h-5 w-5"
                   src={markIcon}
                   width={20}
                   height={20}
@@ -80,7 +80,13 @@ const FlightOptionsDropdown = ({
               </div>
             ) : (
               <div className="flex items-center gap-x-2.5">
-                <Image src={markIcon} width={20} height={20} alt="mark icon" />
+                <Image
+                  src={markIcon}
+                  width={20}
+                  height={20}
+                  alt="mark icon"
+                  className="w-5 h-5"
+                />
                 <span className="text-base w-42">{placeholder}</span>
               </div>
             )}

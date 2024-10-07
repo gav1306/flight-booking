@@ -1,12 +1,5 @@
 import SearchFlight from "./search-flight";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const SearchFlightCard = () => {
   return (

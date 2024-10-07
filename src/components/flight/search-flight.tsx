@@ -90,7 +90,7 @@ const SearchFlightForm = () => {
               width={20}
               height={20}
               alt="switch icon"
-              className="h-5 w-5"
+              className="h-auto w-5"
             />
           </Button>
           <FormField
@@ -121,6 +121,10 @@ const SearchFlightForm = () => {
                     onSelect={departureDateHandler}
                     value={field.value}
                     isError={!!form.formState.errors.departureDate}
+                    disabled={{
+                      before: new Date(),
+                      after: new Date(form.watch("returnDate")),
+                    }}
                   />
                 </FormControl>
               </FormItem>
@@ -137,6 +141,11 @@ const SearchFlightForm = () => {
                     onSelect={returnDateHandler}
                     value={field.value}
                     isError={!!form.formState.errors.returnDate}
+                    disabled={{
+                      before: form.watch("departureDate")
+                        ? new Date(form.watch("departureDate"))
+                        : new Date(),
+                    }}
                   />
                 </FormControl>
               </FormItem>
@@ -148,7 +157,13 @@ const SearchFlightForm = () => {
           type="submit"
           className="text-base font-medium h-12 w-[250px] gap-x-2.5 tracking-widest ml-auto"
         >
-          <Image src={searchIcon} height={16} width={16} alt="search icon" />
+          <Image
+            src={searchIcon}
+            height={16}
+            width={16}
+            alt="search icon"
+            className="h-4 w-4"
+          />
           Search flights
         </Button>
       </form>

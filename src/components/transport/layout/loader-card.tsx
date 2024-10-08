@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -8,12 +10,12 @@ import { cn } from "@/lib/utils";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 import loaderIcon from "../../../app/assets/icons/loader.svg";
 
-import { lazy } from "react";
+import { lazy, useEffect, useState } from "react";
 import Image from "next/image";
 
 const PaperPlaneAnimation = lazy(() => import("./paper-plane-animation"));
 
-const loadingMessages = [
+const INITIAL_LOADING_MESSAGES = [
   {
     name: "Searching 400+ flights",
     isLoading: true,
@@ -32,6 +34,29 @@ const loadingMessages = [
 ];
 
 const LoaderCard = () => {
+  const [loadingMessages, setLoadingMessages] = useState(
+    INITIAL_LOADING_MESSAGES
+  );
+
+  useEffect(() => {
+    loadingMessages.forEach((_, index) => {
+      const timerIncrement = 3000 * (index + 1);
+
+      setTimeout(() => {
+        setLoadingMessages((prevState) => {
+          const updatedMessages = [...prevState];
+
+          updatedMessages[index].isLoading = false;
+          updatedMessages[index].isCompleted = true;
+          if (updatedMessages[index + 1]) {
+            updatedMessages[index + 1].isLoading = true;
+          }
+          return updatedMessages;
+        });
+      }, timerIncrement);
+    });
+  }, []);
+
   return (
     <Card className="w-[323px] rounded-2xl p-4 absolute top-[100px] left-[50%] translate-x-[-50%]">
       <CardTitle className="sr-only">Loading</CardTitle>

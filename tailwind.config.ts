@@ -73,6 +73,7 @@ const config: Config = {
           tertiary: "#787B80",
           dark: "#000C0B",
           "dark-2": "#2B2B2B",
+          disabled: "#c9cacc",
         },
         button: {
           secondary: "#e5ebeb",

@@ -89,7 +89,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             control={form.control}
             name="from"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full lg:w-auto">
                 <FormControl>
                   <FlightOptionsDropdown
                     placeholder="Where from?"
@@ -103,7 +103,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             )}
           />
           <Button
-            className="rounded-full w-13 h-13 bg-secondary p-0 block"
+            className="rounded-full w-13 h-13 bg-secondary p-0"
             variant="ghost"
             onClick={switchLocationsHandler}
             type="button"
@@ -113,14 +113,14 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
               width={20}
               height={20}
               alt="switch icon"
-              className="h-auto w-5 block"
+              className="h-auto w-5"
             />
           </Button>
           <FormField
             control={form.control}
             name="to"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full lg:w-auto">
                 <FormControl>
                   <FlightOptionsDropdown
                     placeholder="Where to?"
@@ -138,7 +138,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             control={form.control}
             name="departureDate"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full lg:w-auto">
                 <FormControl>
                   <DatePicker
                     placeholder="Departure"
@@ -158,7 +158,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             control={form.control}
             name="returnDate"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full lg:w-auto">
                 <FormControl>
                   <DatePicker
                     placeholder="Return"

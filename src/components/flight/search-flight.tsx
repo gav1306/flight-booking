@@ -106,6 +106,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             className="rounded-full w-13 h-13 bg-secondary"
             variant="ghost"
             onClick={switchLocationsHandler}
+            type="button"
           >
             <Image
               src={switchIcon}

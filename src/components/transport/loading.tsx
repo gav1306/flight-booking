@@ -7,7 +7,7 @@ export default function Loading() {
       <div className="relative w-full h-1 bg-gray-300 rounded overflow-hidden">
         <div className="w-full h-full animate-move-infinite absolute bg-custom-gradient" />
       </div>
-      <div className="p-[72px] max-w-[1200px] m-auto flex flex-col gap-4">
+      <div className="p-[72px] pt-[68px] max-w-[1200px] m-auto flex flex-col gap-4">
         {Array(6)
           .fill(null)
           .map((_, index) => {

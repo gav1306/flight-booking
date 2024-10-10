@@ -1,3 +1,5 @@
+import { WEEK_DAYS } from "@/data/flights";
+
 const currentDate = new Date();
 const currentHour = currentDate.getHours();
 
@@ -39,4 +41,20 @@ export const timeDifferenceInHours = (
   const minutes = Math.floor((diffSeconds % 3600) / 60);
 
   return `${hours}h ${minutes}min`;
+};
+
+const daysOfWeek = [
+  WEEK_DAYS.SUNDAY,
+  WEEK_DAYS.MONDAY,
+  WEEK_DAYS.TUESDAY,
+  WEEK_DAYS.WEDNESDAY,
+  WEEK_DAYS.THURSDAY,
+  WEEK_DAYS.FRIDAY,
+  WEEK_DAYS.SATURDAY,
+];
+
+export const getDayFromTime = (timestamp: number) => {
+  const date = new Date(timestamp);
+  const weekday = daysOfWeek[date.getDay()];
+  return weekday;
 };

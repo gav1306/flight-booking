@@ -118,7 +118,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
                 )}
               </span>
             </div>
-            <FlightTimelineDrawer>
+            <FlightTimelineDrawer departure={departure} back={back}>
               <Button className="w-full">Select</Button>
             </FlightTimelineDrawer>
           </>

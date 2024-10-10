@@ -79,6 +79,7 @@ body {
   .pagination {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
   }
 
@@ -93,7 +94,17 @@ body {
     align-items: center;
   }
 
-  .pagination li :hover {
+  .pagination li.selected {
+    background-color: #003e39;
+    color: #fff;
+    border-radius: 6px;
+  }
+
+  .pagination li.selected a {
+    border-color: #003e39;
+  }
+
+  .pagination li:not(.selected) :hover {
     background-color: #e5e5ed;
   }
 

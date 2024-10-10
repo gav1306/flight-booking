@@ -58,3 +58,13 @@ export const getDayFromTime = (timestamp: number) => {
   const weekday = daysOfWeek[date.getDay()];
   return weekday;
 };
+
+export const getDateFromTimeStamp = (timestamp: number) => {
+  const date = new Date(timestamp);
+
+  const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
+  const day = date.getDate();
+  const month = date.toLocaleDateString("en-US", { month: "short" });
+  const formattedDate = `${weekday} ${day} ${month}`;
+  return formattedDate;
+};

@@ -18,8 +18,8 @@ const FilterFlightsDrawer = ({ children }: FilterFlightsDrawerProps) => {
   };
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger>{children}</SheetTrigger>
-      <SheetContent side="top" className="">
+      <SheetTrigger className="w-full lg:w-auto">{children}</SheetTrigger>
+      <SheetContent side="top">
         <SheetTitle className="sr-only">Flight filters</SheetTitle>
         <SheetDescription className="sr-only">
           Search for flights

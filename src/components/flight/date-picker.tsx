@@ -37,7 +37,7 @@ const DatePicker = ({
         <Button
           variant={"outline"}
           className={cn(
-            "w-[177px] h-15 justify-between p-3",
+            "w-full lg:w-[177px] h-15 justify-between p-3",
             isError && "border-red-500"
           )}
         >

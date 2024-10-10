@@ -56,7 +56,7 @@ const FlightOptionsDropdown = ({
           role="combobox"
           aria-expanded={open}
           className={cn(
-            "w-[267.5px] h-15 justify-between p-3",
+            "w-full lg:w-[267.5px] h-15 justify-between p-3",
             isError && "border-red-500"
           )}
         >

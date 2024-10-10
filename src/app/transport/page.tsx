@@ -38,7 +38,7 @@ const Transport = () => {
 
   return (
     <section>
-      <div className="p-[72px] pt-6 max-w-[1200px] m-auto flex flex-col gap-4 border-t">
+      <div className="p-6 lg:p-[72px] pt-6 max-w-[1200px] m-auto flex flex-col gap-4 border-t">
         <span className="text-lg text-text-tertiary">
           Showing {data?.limit} of {data?.totalFlights} results
         </span>

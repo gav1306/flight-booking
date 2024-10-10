@@ -59,7 +59,7 @@ const FlightTimelineDrawer = ({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent className="min-w-[45dvw] max-w-[659px] h-[calc(100dvh-32px)] top-[16px] rounded-lg overflow-y-scroll">
+      <SheetContent className="min-w-[100dvw] lg:min-w-[45dvw] lg:max-w-[659px] lg:h-[calc(100dvh-32px)] lg:top-[16px] rounded-lg overflow-y-scroll">
         <Button
           className="rounded-full w-7 h-7 p-0 bg-secondary"
           variant="ghost"
@@ -81,7 +81,7 @@ const FlightTimelineDrawer = ({
             Flight timeline
           </SheetDescription>
         </SheetHeader>
-        <div className="relative">
+        <div className="relative p-4 lg:p-0">
           <div>
             {departure && (
               <>
@@ -275,7 +275,7 @@ const FlightTimelineDrawer = ({
             )}
           </div>
           {departure && (
-            <div className="absolute top-14 right-0 text-text-secondary flex items-start gap-4 text-xs">
+            <div className="hidden absolute top-14 right-0 text-text-secondary lg:flex items-start gap-4 text-xs">
               <Image
                 src={departure.logo}
                 width={28}
@@ -299,7 +299,7 @@ const FlightTimelineDrawer = ({
             </div>
           )}
           {back && (
-            <div className="absolute bottom-14 right-0 text-text-secondary flex items-start gap-4 text-xs">
+            <div className="hidden absolute bottom-14 right-0 text-text-secondary lg:flex items-start gap-4 text-xs">
               <Image
                 src={back.logo}
                 width={28}

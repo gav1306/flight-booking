@@ -84,12 +84,12 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-8"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-col lg:flex-row">
           <FormField
             control={form.control}
             name="from"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <FlightOptionsDropdown
                     placeholder="Where from?"
@@ -103,7 +103,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             )}
           />
           <Button
-            className="rounded-full w-13 h-13 bg-secondary"
+            className="rounded-full w-13 h-13 bg-secondary p-0 block"
             variant="ghost"
             onClick={switchLocationsHandler}
             type="button"
@@ -113,14 +113,14 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
               width={20}
               height={20}
               alt="switch icon"
-              className="h-auto w-5"
+              className="h-auto w-5 block"
             />
           </Button>
           <FormField
             control={form.control}
             name="to"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <FlightOptionsDropdown
                     placeholder="Where to?"
@@ -138,7 +138,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             control={form.control}
             name="departureDate"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <DatePicker
                     placeholder="Departure"
@@ -158,7 +158,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             control={form.control}
             name="returnDate"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <DatePicker
                     placeholder="Return"
@@ -179,7 +179,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
 
         <Button
           type="submit"
-          className="text-base font-medium h-12 w-[250px] gap-x-2.5 tracking-widest ml-auto"
+          className="text-base font-medium w-full h-12 lg:w-[250px] gap-x-2.5 tracking-widest ml-auto"
         >
           <Image
             src={searchIcon}

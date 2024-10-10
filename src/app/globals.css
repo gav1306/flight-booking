@@ -75,6 +75,31 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pagination li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e6e8ed;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pagination li :hover {
+    background-color: #e5e5ed;
+  }
+
+  .pagination li.disabled a {
+    cursor: not-allowed;
+  }
 }
 
 @layer utilities {

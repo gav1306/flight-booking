@@ -46,8 +46,8 @@ export const FLIGHTS: Flight[] = [
     name: "Emirates",
     code: "EK 202",
     logo: emiratesLogo,
-    start: "DXB",
-    end: "JFK",
+    start: "DEL",
+    end: "DXB",
     startTime: 43200, // 12:00 PM
     endTime: 82800, // 11:00 PM
     travelClass: TICKET_CLASS.BUSINESS,
@@ -72,8 +72,8 @@ export const FLIGHTS: Flight[] = [
     name: "Lufthansa",
     code: "LH 469",
     logo: lufthansaLogo,
-    start: "FRA",
-    end: "LAX",
+    start: "DXB",
+    end: "DEL",
     startTime: 54000, // 3:00 PM
     endTime: 93600, // 2:00 AM (next day)
     travelClass: TICKET_CLASS.BUSINESS,
@@ -81,7 +81,7 @@ export const FLIGHTS: Flight[] = [
     currency: "AED",
     stops: [
       {
-        code: "CDG",
+        code: "HND",
         landTime: 64800, // 6:00 PM
         takeOffTime: 68400, // 7:00 PM
       },
@@ -91,15 +91,15 @@ export const FLIGHTS: Flight[] = [
         takeOffTime: 82800, // 11:00 PM
       },
     ],
-    availableDays: [WEEK_DAYS.THURSDAY, WEEK_DAYS.SUNDAY],
+    availableDays: [WEEK_DAYS.THURSDAY, WEEK_DAYS.SUNDAY, WEEK_DAYS.MONDAY],
   },
   {
     id: uuidv4(),
     name: "Qatar Airways",
     code: "QR 301",
     logo: emiratesLogo,
-    start: "DOH",
-    end: "SFO",
+    start: "DEL",
+    end: "DXB",
     startTime: 54540, // 3:09 PM (hours and minutes in seconds)
     endTime: 86400, // 12:00 AM (next day)
     travelClass: TICKET_CLASS.ECONOMY,
@@ -113,8 +113,8 @@ export const FLIGHTS: Flight[] = [
     name: "Etihad",
     code: "EY 150",
     logo: lufthansaLogo,
-    start: "AUH",
-    end: "SYD",
+    start: "DXB",
+    end: "DEL",
     startTime: 30120, // 8:22 AM
     endTime: 68400, // 7:00 PM
     travelClass: TICKET_CLASS.FIRST,

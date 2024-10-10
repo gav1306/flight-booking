@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
-import loaderIcon from "../../../app/assets/icons/loader.svg";
+import loaderIcon from "../../app/assets/icons/loader.svg";
 
 import { lazy, useEffect, useState } from "react";
 import Image from "next/image";
@@ -55,6 +55,7 @@ const LoaderCard = () => {
         });
       }, timerIncrement);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

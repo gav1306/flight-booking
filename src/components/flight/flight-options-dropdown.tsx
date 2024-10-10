@@ -22,18 +22,20 @@ import Image from "next/image";
 import markIcon from "../../app/assets/icons/mark.svg";
 import { airportFilter } from "@/lib/helper";
 import useSWR from "swr";
-import { AIRPORT_KEY, getAirports } from "@/app/services/flight";
+import { AIRPORT_KEY, getAirports } from "@/services/flight";
 interface FlightOptionsDropdownProps {
   placeholder: string;
   onSelect: (value: string) => void;
   value: string;
   isError: boolean;
+  excludedCode: string;
 }
 const FlightOptionsDropdown = ({
   placeholder,
   onSelect,
   value,
   isError,
+  excludedCode,
 }: FlightOptionsDropdownProps) => {
   const { data, isLoading } = useSWR(AIRPORT_KEY, getAirports);
   const [open, setOpen] = useState(false);
@@ -109,16 +111,21 @@ const FlightOptionsDropdown = ({
             </CommandEmpty>
             {data && (
               <CommandGroup>
-                {data.map((airport) => (
-                  <CommandItem
-                    key={airport.code}
-                    value={airport.code}
-                    onSelect={selectAirportHandler}
-                    className="cursor-pointer"
-                  >
-                    <Option {...airport} />
-                  </CommandItem>
-                ))}
+                {data.map((airport) => {
+                  if (excludedCode === airport.code) {
+                    return null;
+                  }
+                  return (
+                    <CommandItem
+                      key={airport.code}
+                      value={airport.code}
+                      onSelect={selectAirportHandler}
+                      className="cursor-pointer"
+                    >
+                      <Option {...airport} />
+                    </CommandItem>
+                  );
+                })}
               </CommandGroup>
             )}
           </CommandList>

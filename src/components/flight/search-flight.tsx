@@ -67,11 +67,15 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
     form.setValue("returnDate", value);
   };
 
+  const fromValue = form.watch("from");
+  const toValue = form.watch("to");
   const switchLocationsHandler = () => {
-    const from = form.getValues("from");
-    const to = form.getValues("to");
-    form.setValue("from", to);
-    form.setValue("to", from);
+    if (toValue) {
+      form.setValue("from", toValue);
+    }
+    if (fromValue) {
+      form.setValue("to", fromValue);
+    }
   };
 
   return (
@@ -92,6 +96,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
                     onSelect={whereFromHandler}
                     isError={!!form.formState.errors.from}
                     value={field.value}
+                    excludedCode={toValue}
                   />
                 </FormControl>
               </FormItem>
@@ -121,6 +126,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
                     onSelect={whereToHandler}
                     value={field.value}
                     isError={!!form.formState.errors.to}
+                    excludedCode={fromValue}
                   />
                 </FormControl>
               </FormItem>

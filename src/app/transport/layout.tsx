@@ -1,4 +1,4 @@
-import FilterHeader from "@/components/transport/layout/filter-header";
+import FilterHeader from "@/components/transport/filter-header";
 
 interface LayoutProps {
   children: React.ReactNode;

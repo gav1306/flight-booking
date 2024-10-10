@@ -1,5 +1,5 @@
 "use client";
-import paperPlane from "../../../app/assets/animations/paper-plane.json";
+import paperPlane from "../../app/assets/animations/paper-plane.json";
 import Player from "lottie-react";
 
 const PaperPlaneAnimation = () => {

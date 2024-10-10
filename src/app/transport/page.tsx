@@ -1,20 +1,15 @@
-import LoaderCard from "@/components/transport/layout/loader-card";
-import ShimmerUi from "@/components/transport/layout/shimmer-ui";
+"use client";
 
-export default function Transport() {
-  return (
-    <section className="relative">
-      <div className="relative w-full h-1 bg-gray-300 rounded overflow-hidden">
-        <div className="w-full h-full animate-move-infinite absolute bg-custom-gradient" />
-      </div>
-      <div className="p-[72px] max-w-[1200px] m-auto flex flex-col gap-4">
-        {Array(6)
-          .fill(null)
-          .map((_, index) => {
-            return <ShimmerUi key={index} />;
-          })}
-      </div>
-      <LoaderCard />
-    </section>
-  );
-}
+import useSWR from "swr";
+import { FLIGHTS_KEY, getFlights } from "@/services/flight";
+import Loading from "@/components/transport/loading";
+
+const Transport = () => {
+  const { data, isLoading } = useSWR(FLIGHTS_KEY, getFlights);
+  if (isLoading) {
+    return <Loading />;
+  }
+  return <div>Transport</div>;
+};
+
+export default Transport;

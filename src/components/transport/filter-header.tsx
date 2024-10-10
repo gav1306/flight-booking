@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import searchIcon from "../../../app/assets/icons/search-dark.svg";
-import closeIcon from "../../../app/assets/icons/close.svg";
+import searchIcon from "../../app/assets/icons/search-dark.svg";
+import closeIcon from "../../app/assets/icons/close.svg";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AIRPORTS } from "@/data/airports";
 import { format } from "date-fns";
-import FilterFlightsDrawer from "./filter/filter-flights-drawer";
+import FilterFlightsDrawer from "./filter-flights-drawer";
 import { getFlightFilterSearchParams } from "@/lib/helper";
 
 const FilterHeader = () => {

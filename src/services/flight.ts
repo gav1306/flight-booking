@@ -8,7 +8,7 @@ export const getAirports = () => {
   return new Promise<typeof AIRPORTS>((resolve) => {
     setTimeout(() => {
       resolve(AIRPORTS);
-    }, 5000);
+    }, 0);
   });
 };
 
@@ -16,6 +16,6 @@ export const getFlights = () => {
   return new Promise<typeof FLIGHTS>((resolve) => {
     setTimeout(() => {
       resolve(FLIGHTS);
-    }, 10000);
+    }, 0);
   });
 };

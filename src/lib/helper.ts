@@ -39,3 +39,9 @@ export const getFlightFilterSearchParams = (
 
   return { from, to, departureDate, returnDate };
 };
+
+export const formatPriceWithCommas = (price: number): string => {
+  const priceString = price.toString();
+
+  return priceString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

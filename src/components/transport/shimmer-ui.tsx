@@ -18,7 +18,7 @@ const ShimmerUi = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="hidden lg:flex flex-col gap-10">
         <div className="space-y-4">
           <Skeleton className="h-4 w-[60px] rounded-2xl" />
           <div className="flex gap-14">

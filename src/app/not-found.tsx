@@ -1,6 +1,6 @@
 import Image from "next/image";
-import emptyIllustration from "../../app/assets/illustrations/empty.svg";
-import { Button } from "../ui/button";
+import emptyIllustration from "./assets/illustrations/empty.svg";
+import { Button } from "../components/ui/button";
 import Link from "next/link";
 
 const NotFound = () => {
@@ -17,7 +17,7 @@ const NotFound = () => {
           />
           <div className="flex flex-col items-center gap-4">
             <h1 className="text-3xl lg:text-4xl text-bold text-center">
-              No flights found...!
+              Page you're looking for does not exist.
             </h1>
             <Button asChild>
               <Link href="/" className="tracking-wider">

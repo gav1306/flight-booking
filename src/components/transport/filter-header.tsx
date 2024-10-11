@@ -65,8 +65,8 @@ const FilterHeader = () => {
             <div className="w-full lg:w-9 h-9 rounded-full p-0 bg-button-secondary flex justify-center items-center">
               <Image
                 src={searchIcon}
-                width={16}
-                height={16}
+                width={17}
+                height={17}
                 alt="search icon"
                 className="w-4 h-auto"
               />

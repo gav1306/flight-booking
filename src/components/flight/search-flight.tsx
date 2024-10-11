@@ -110,8 +110,8 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
           >
             <Image
               src={switchIcon}
-              width={20}
-              height={20}
+              width={21}
+              height={21}
               alt="switch icon"
               className="h-auto w-5"
             />

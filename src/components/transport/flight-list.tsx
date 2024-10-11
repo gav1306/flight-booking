@@ -6,7 +6,7 @@ import Loading from "@/components/transport/loading";
 import FlightCard from "../flight/flight-card";
 import { useSearchParams } from "next/navigation";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import NotFound from "@/components/flight/not-found";
 
@@ -27,6 +27,10 @@ const FlightList = () => {
   const pageChangeHandler = ({ selected }: { selected: number }) => {
     setPage(selected + 1);
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [query.from, query.to, query.departureDate, query.returnDate]);
 
   if (isLoading) {
     return <Loading />;

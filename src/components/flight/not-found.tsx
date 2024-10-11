@@ -14,6 +14,7 @@ const NotFound = () => {
             height={200}
             alt="empty illustration"
             className="w-80 h-auto"
+            priority={true}
           />
           <div className="flex flex-col items-center gap-4">
             <h1 className="text-3xl lg:text-4xl text-bold text-center">

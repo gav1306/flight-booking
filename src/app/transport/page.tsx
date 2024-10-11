@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const Transport = () => {
   return (
-    <section>
+    <section className="border-t">
       <Suspense fallback={<Loading />}>
         <FlightList />
       </Suspense>

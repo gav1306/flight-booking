@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <section>
-      <div className="p-[72px] max-w-[1200px] m-auto flex flex-col gap-4 border-t">
+    <section className="border-t">
+      <div className="p-[72px] max-w-[1200px] m-auto flex flex-col gap-4">
         <div className="flex flex-col gap-10 items-center">
           <Image
             src={emptyIllustration}

@@ -17,7 +17,7 @@ const NotFound = () => {
           />
           <div className="flex flex-col items-center gap-4">
             <h1 className="text-3xl lg:text-4xl text-bold text-center">
-              Page you're looking for does not exist.
+              {`Page you're looking for does not exist.`}
             </h1>
             <Button asChild>
               <Link href="/" className="tracking-wider">

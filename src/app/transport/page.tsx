@@ -28,9 +28,9 @@ const Transport = () => {
     setPage(selected + 1);
   };
 
-  // if (isLoading) {
-  return <Loading />;
-  // }
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (!data?.flights.length) {
     return <NotFound />;

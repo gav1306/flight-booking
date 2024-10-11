@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 import loaderIcon from "../../app/assets/icons/loader.svg";
 
-import { lazy, useEffect, useState } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const PaperPlaneAnimation = lazy(() => import("./paper-plane-animation"));
@@ -35,14 +35,15 @@ const INITIAL_LOADING_MESSAGES = [
 
 const LoaderCard = () => {
   const [loadingMessages, setLoadingMessages] = useState(
-    INITIAL_LOADING_MESSAGES
+    structuredClone(INITIAL_LOADING_MESSAGES)
   );
 
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
   useEffect(() => {
     loadingMessages.forEach((_, index) => {
       const timerIncrement = 3000 * (index + 1);
 
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setLoadingMessages((prevState) => {
           const updatedMessages = [...prevState];
 
@@ -54,9 +55,20 @@ const LoaderCard = () => {
           return updatedMessages;
         });
       }, timerIncrement);
+      timeoutRefs.current.push(timeout);
     });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const timeoutArr = timeoutRefs.current;
+    return () => {
+      timeoutArr.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
+    };
+  }, [timeoutRefs]);
 
   return (
     <Card className="w-[323px] rounded-2xl p-4 absolute top-[100px] left-[50%] translate-x-[-50%]">

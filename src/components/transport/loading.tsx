@@ -8,7 +8,7 @@ export default function Loading() {
         <div className="w-full h-full animate-move-infinite absolute bg-custom-gradient" />
       </div>
       <div className="p-6 lg:p-[72px] pt-[68px] max-w-[1200px] m-auto flex flex-col gap-4">
-        {Array(6)
+        {Array(4)
           .fill(null)
           .map((_, index) => {
             return <ShimmerUi key={index} />;

@@ -31,7 +31,7 @@ interface FlightQuery {
   page: number;
 }
 
-const FLIGHT_LIMIT_PER_PAGE = 1;
+const FLIGHT_LIMIT_PER_PAGE = 4;
 export const getFlights = ({
   from,
   to,

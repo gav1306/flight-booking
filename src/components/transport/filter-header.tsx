@@ -68,7 +68,7 @@ const FilterHeader = () => {
                 width={16}
                 height={16}
                 alt="search icon"
-                className="w-4 h-4"
+                className="w-4 h-auto"
               />
             </div>
           </div>
@@ -84,7 +84,7 @@ const FilterHeader = () => {
             width={20}
             height={20}
             alt="close icon"
-            className="h-5 w-5"
+            className="h-auto w-5"
           />
         </Button>
       </div>

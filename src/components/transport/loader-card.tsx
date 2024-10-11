@@ -95,7 +95,7 @@ const LoaderCard = () => {
                       src={loaderIcon}
                       width={18}
                       height={18}
-                      className="h-[18px] w-[18px]"
+                      className="h-auto w-[18px]"
                       alt="loader icon"
                     />
                   ) : (

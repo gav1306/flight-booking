@@ -64,7 +64,7 @@ const FlightOptionsDropdown = ({
             {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
-                  className="relative top-0.5 h-5 w-5"
+                  className="relative top-0.5 h-auto w-5"
                   src={markIcon}
                   width={20}
                   height={20}
@@ -93,7 +93,7 @@ const FlightOptionsDropdown = ({
                   width={20}
                   height={20}
                   alt="mark icon"
-                  className="w-5 h-5"
+                  className="w-5 h-auto"
                 />
                 <span className="text-base w-42">{placeholder}</span>
               </div>

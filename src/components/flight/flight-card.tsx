@@ -17,7 +17,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
           <div className="flex lg:items-center gap-5 flex-col lg:flex-row">
             <Image
               src={departure.logo}
-              className="w-[44px] h-[44px] object-cover border rounded-sm p-1"
+              className="w-[44px] h-auto object-cover border rounded-sm p-1"
               alt={`${departure.name} logo`}
             />
             <div>
@@ -64,7 +64,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
           <div className="flex flex-col lg:flex-row lg:items-center gap-5">
             <Image
               src={back.logo}
-              className="w-[44px] h-[44px] object-cover border rounded-sm p-1"
+              className="w-[44px] h-auto object-cover border rounded-sm p-1"
               alt={`${back.name} logo`}
             />
             <div>

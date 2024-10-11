@@ -186,7 +186,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             height={16}
             width={16}
             alt="search icon"
-            className="h-4 w-4"
+            className="h-auto w-4"
           />
           Search flights
         </Button>

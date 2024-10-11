@@ -45,7 +45,7 @@ const DatePicker = ({
             {value ? (
               <div className="flex gap-x-2.5 items-end">
                 <Image
-                  className="relative top-0.5 h-5 w-5"
+                  className="relative top-0.5 h-auto w-5"
                   src={calenderIcon}
                   width={20}
                   height={20}
@@ -66,6 +66,7 @@ const DatePicker = ({
                   src={calenderIcon}
                   width={20}
                   height={20}
+                  className="w-5 h-auto"
                   alt="calender icon"
                 />
                 <span className="text-base">{placeholder}</span>

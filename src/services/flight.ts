@@ -12,7 +12,7 @@ export const getAirports = () => {
   return new Promise<typeof AIRPORTS>((resolve) => {
     setTimeout(() => {
       resolve(AIRPORTS);
-    }, 5000);
+    }, 2000);
   });
 };
 
@@ -94,6 +94,6 @@ export const getFlights = ({
         totalFlights,
         limit: FLIGHT_LIMIT_PER_PAGE,
       });
-    }, 10000);
+    }, 3500);
   });
 };

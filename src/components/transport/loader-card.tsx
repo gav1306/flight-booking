@@ -41,7 +41,7 @@ const LoaderCard = () => {
   const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
   useEffect(() => {
     loadingMessages.forEach((_, index) => {
-      const timerIncrement = 3000 * (index + 1);
+      const timerIncrement = 1000 * (index + 1);
 
       const timeout = setTimeout(() => {
         setLoadingMessages((prevState) => {

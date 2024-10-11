@@ -11,10 +11,10 @@ type FlightCardProps = { departure: Flight; back: Flight };
 
 const FlightCard = ({ departure, back }: FlightCardProps) => {
   return (
-    <div className="rounded-md border grid lg:grid-cols-[1fr_214px]">
-      <div className="px-5 pl-7 py-5 flex flex-col gap-12 justify-center">
+    <div className="rounded-md border grid sm:grid-cols-[1fr_214px]">
+      <div className="px-5 pl-7 py-5 flex flex-col gap-4 lg:gap-12 justify-center">
         {departure && (
-          <div className="flex lg:items-center gap-5 flex-col lg:flex-row">
+          <div className="flex items-center gap-5">
             <Image
               src={departure.logo}
               className="w-[44px] h-auto object-cover border rounded-sm p-1"
@@ -29,7 +29,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
                 <span>{secondsToTime(departure.endTime)}</span>
               </div>
             </div>
-            <div className="lg:ml-auto lg:w-[174px] lg:text-center">
+            <div className="hidden lg:block lg:ml-auto lg:w-[174px] lg:text-center">
               <div className="text-sm text-text-tertiary">
                 {departure.start} - {departure.end}
               </div>
@@ -37,7 +37,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
                 {timeDifferenceInHours(departure.startTime, departure.endTime)}
               </div>
             </div>
-            <div className="lg:w-[174px]">
+            <div className="hidden lg:block lg:w-[174px]">
               <div className="text-sm text-text-tertiary text-nowrap overflow-hidden truncate">
                 {!!departure.stops.length &&
                   departure.stops
@@ -61,7 +61,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
           </div>
         )}
         {back && (
-          <div className="flex flex-col lg:flex-row lg:items-center gap-5">
+          <div className="flex items-center gap-5">
             <Image
               src={back.logo}
               className="w-[44px] h-auto object-cover border rounded-sm p-1"
@@ -76,7 +76,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
                 <span>{secondsToTime(back.endTime)}</span>
               </div>
             </div>
-            <div className="lg:ml-auto lg:w-[174px] lg:text-center">
+            <div className="hidden lg:block lg:ml-auto lg:w-[174px] lg:text-center">
               <div className="text-sm text-text-tertiary">
                 {back.start} - {back.end}
               </div>
@@ -84,7 +84,7 @@ const FlightCard = ({ departure, back }: FlightCardProps) => {
                 {timeDifferenceInHours(back.startTime, back.endTime)}
               </div>
             </div>
-            <div className="lg:w-[174px]">
+            <div className=" hidden lg:block lg:w-[174px]">
               <div className="text-sm text-text-tertiary text-nowrap overflow-hidden truncate">
                 {!!back.stops.length &&
                   back.stops

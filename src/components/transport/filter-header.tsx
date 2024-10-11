@@ -66,7 +66,7 @@ const FilterHeader = () => {
               <Image
                 src={searchIcon}
                 width={17}
-                height={17}
+                height={16}
                 alt="search icon"
                 className="w-4 h-auto"
               />

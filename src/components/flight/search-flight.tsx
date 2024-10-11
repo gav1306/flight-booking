@@ -70,12 +70,9 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
   const fromValue = form.watch("from");
   const toValue = form.watch("to");
   const switchLocationsHandler = () => {
-    if (toValue) {
-      form.setValue("from", toValue);
-    }
-    if (fromValue) {
-      form.setValue("to", fromValue);
-    }
+    form.setValue("from", toValue);
+
+    form.setValue("to", fromValue);
   };
 
   return (
@@ -111,7 +108,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
             <Image
               src={switchIcon}
               width={21}
-              height={21}
+              height={20}
               alt="switch icon"
               className="h-auto w-5"
             />
@@ -183,7 +180,7 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
         >
           <Image
             src={searchIcon}
-            height={16}
+            height={17}
             width={16}
             alt="search icon"
             className="h-auto w-4"

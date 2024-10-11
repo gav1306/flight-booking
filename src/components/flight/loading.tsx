@@ -3,7 +3,7 @@ import loadingIcon from "../../app/assets/icons/loader.svg";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center p-4">
       <Image
         src={loadingIcon}
         width={20}

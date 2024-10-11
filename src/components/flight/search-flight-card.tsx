@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import SearchFlight from "./search-flight";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Loading from "./loading";
 
 const SearchFlightCard = () => {
   return (
@@ -11,8 +13,11 @@ const SearchFlightCard = () => {
           </div>
         </CardTitle>
       </CardHeader>
+
       <CardContent className="p-0">
-        <SearchFlight />
+        <Suspense fallback={<Loading />}>
+          <SearchFlight />
+        </Suspense>
       </CardContent>
     </Card>
   );

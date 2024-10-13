@@ -180,8 +180,8 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
         >
           <Image
             src={searchIcon}
-            height={17}
-            width={16}
+            height={16}
+            width={17}
             alt="search icon"
             className="h-auto w-4"
           />

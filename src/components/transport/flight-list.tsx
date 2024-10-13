@@ -39,10 +39,13 @@ const FlightList = () => {
   if (!data?.flights.length) {
     return <NotFound />;
   }
+
+  const displayedFlights = (page - 1) * data.limit + data.flights.length;
+  
   return (
     <div className="p-6 lg:p-[72px] pt-6 max-w-[1200px] m-auto flex flex-col gap-4">
       <span className="text-lg text-text-tertiary">
-        Showing {data?.limit * page} of {data?.totalFlights} results
+        Showing {displayedFlights} of {data?.totalFlights} results
       </span>
       {data?.flights.map((flight) => {
         return <FlightCard key={flight.id} {...flight} />;

@@ -59,12 +59,12 @@ const SearchFlightForm = ({ onClose }: SearchFlightFormProps) => {
     form.setValue("to", value);
   };
 
-  const departureDateHandler = (value: number) => {
-    form.setValue("departureDate", value);
+  const departureDateHandler = (value?: number) => {
+    form.setValue("departureDate", value || 0);
   };
 
-  const returnDateHandler = (value: number) => {
-    form.setValue("returnDate", value);
+  const returnDateHandler = (value?: number) => {
+    form.setValue("returnDate", value || 0);
   };
 
   const fromValue = form.watch("from");

@@ -42,7 +42,7 @@ const FlightList = () => {
   return (
     <div className="p-6 lg:p-[72px] pt-6 max-w-[1200px] m-auto flex flex-col gap-4">
       <span className="text-lg text-text-tertiary">
-        Showing {data?.limit} of {data?.totalFlights} results
+        Showing {data?.limit * page} of {data?.totalFlights} results
       </span>
       {data?.flights.map((flight) => {
         return <FlightCard key={flight.id} {...flight} />;

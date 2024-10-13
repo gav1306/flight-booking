@@ -15,7 +15,7 @@ import { Matcher } from "react-day-picker";
 interface DatePickerProps {
   placeholder: string;
   value: number;
-  onSelect: (value: number) => void;
+  onSelect: (value?: number) => void;
   isError: boolean;
   disabled: Matcher;
 }
@@ -28,7 +28,7 @@ const DatePicker = ({
 }: DatePickerProps) => {
   const [open, setOpen] = useState(false);
   const dateSelectHandler = (value: Date | undefined) => {
-      onSelect(value.getTime());
+      onSelect(value?.getTime());
       setOpen(false);
   };
 

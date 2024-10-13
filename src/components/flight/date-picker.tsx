@@ -39,6 +39,7 @@ const DatePicker = ({
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
+          aria-expanded={open}
           className={cn(
             "w-full lg:w-[177px] h-15 justify-between p-3",
             isError && "border-red-500"

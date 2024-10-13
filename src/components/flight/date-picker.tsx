@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { format } from "date-fns";
 import calenderIcon from "../../app/assets/icons/calendar.svg";
 import { Button } from "@/components/ui/button";
@@ -25,14 +26,16 @@ const DatePicker = ({
   isError,
   disabled,
 }: DatePickerProps) => {
+  const [open, setOpen] = useState(false);
   const dateSelectHandler = (value: Date | undefined) => {
     if (value) {
       onSelect(value.getTime());
+      setOpen(false);
     }
   };
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}

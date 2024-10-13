@@ -28,10 +28,8 @@ const DatePicker = ({
 }: DatePickerProps) => {
   const [open, setOpen] = useState(false);
   const dateSelectHandler = (value: Date | undefined) => {
-    if (value) {
       onSelect(value.getTime());
       setOpen(false);
-    }
   };
 
   return (

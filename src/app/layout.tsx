@@ -18,7 +18,7 @@ const neueMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kitt Assignment",
+  title: "Flight Booking",
   description: "Made by Gayatri Patil with ❤️",
 };
 
